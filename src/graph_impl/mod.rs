@@ -273,10 +273,10 @@ impl<E, Ix: IndexType> Edge<E, Ix>
 /// [`Dot`](../dot/struct.Dot.html)):
 ///
 /// ```
-/// use petgraph::Graph;
+/// use vetgraph::Graph;
 ///
 /// let mut deps = Graph::<&str, &str>::new();
-/// let pg = deps.add_node("petgraph");
+/// let pg = deps.add_node("vetgraph");
 /// let fb = deps.add_node("fixedbitset");
 /// let qc = deps.add_node("quickcheck");
 /// let rand = deps.add_node("rand");
@@ -1029,8 +1029,8 @@ impl<N, E, Ty, Ix> Graph<N, E, Ty, Ix>
     /// **Panics** if the indices are equal or if they are out of bounds.
     ///
     /// ```
-    /// use petgraph::{Graph, Incoming};
-    /// use petgraph::visit::Dfs;
+    /// use vetgraph::{Graph, Incoming};
+    /// use vetgraph::visit::Dfs;
     ///
     /// let mut gr = Graph::new();
     /// let a = gr.add_node(0.);
@@ -1209,7 +1209,7 @@ impl<N, E, Ty, Ix> Graph<N, E, Ty, Ix>
     /// Nodes are inserted automatically to match the edges.
     ///
     /// ```
-    /// use petgraph::Graph;
+    /// use vetgraph::Graph;
     ///
     /// let gr = Graph::<(), i32>::from_edges(&[
     ///     (0, 1), (0, 2), (0, 3),
@@ -1740,8 +1740,8 @@ impl<Ix: IndexType> GraphIndex for EdgeIndex<Ix> {
 /// in the following example:
 ///
 /// ```
-/// use petgraph::{Graph, Incoming};
-/// use petgraph::visit::Dfs;
+/// use vetgraph::{Graph, Incoming};
+/// use vetgraph::visit::Dfs;
 ///
 /// let mut gr = Graph::new();
 /// let a = gr.add_node(0.);

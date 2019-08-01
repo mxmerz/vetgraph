@@ -156,7 +156,7 @@ impl<N, E, Ty> GraphMap<N, E, Ty>
     /// Nodes are inserted automatically to match the edges.
     ///
     /// ```
-    /// use petgraph::graphmap::UnGraphMap;
+    /// use vetgraph::graphmap::UnGraphMap;
     ///
     /// // Create a new undirected GraphMap.
     /// // Use a type hint to have `()` be the edge weight type.
@@ -227,7 +227,7 @@ impl<N, E, Ty> GraphMap<N, E, Ty>
     ///
     /// ```
     /// // Create a GraphMap with directed edges, and add one edge to it
-    /// use petgraph::graphmap::DiGraphMap;
+    /// use vetgraph::graphmap::DiGraphMap;
     ///
     /// let mut g = DiGraphMap::new();
     /// g.add_edge("x", "y", -1);
@@ -282,7 +282,7 @@ impl<N, E, Ty> GraphMap<N, E, Ty>
     ///
     /// ```
     /// // Create a GraphMap with undirected edges, and add and remove an edge.
-    /// use petgraph::graphmap::UnGraphMap;
+    /// use vetgraph::graphmap::UnGraphMap;
     ///
     /// let mut g = UnGraphMap::new();
     /// g.add_edge("x", "y", -1);

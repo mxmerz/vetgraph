@@ -789,7 +789,7 @@ impl<N, E, Ty, Ix> StableGraph<N, E, Ty, Ix>
     /// Nodes are inserted automatically to match the edges.
     ///
     /// ```
-    /// use petgraph::stable_graph::StableGraph;
+    /// use vetgraph::stable_graph::StableGraph;
     ///
     /// let gr = StableGraph::<(), i32>::from_edges(&[
     ///     (0, 1), (0, 2), (0, 3),
@@ -1511,9 +1511,9 @@ impl<'a, E, Ix> Iterator for Neighbors<'a, E, Ix> where
 /// in the following example:
 ///
 /// ```
-/// use petgraph::visit::Dfs;
-/// use petgraph::Incoming;
-/// use petgraph::stable_graph::StableGraph;
+/// use vetgraph::visit::Dfs;
+/// use vetgraph::Incoming;
+/// use vetgraph::stable_graph::StableGraph;
 ///
 /// let mut gr = StableGraph::new();
 /// let a = gr.add_node(0.);

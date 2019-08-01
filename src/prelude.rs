@@ -2,7 +2,7 @@
 //! Commonly used items.
 //!
 //! ```
-//! use petgraph::prelude::*;
+//! use vetgraph::prelude::*;
 //! ```
 
 #[doc(no_inline)]

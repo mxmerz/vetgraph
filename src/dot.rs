@@ -12,8 +12,8 @@ use visit::{GraphRef};
 /// # Examples
 ///
 /// ```
-/// use petgraph::Graph;
-/// use petgraph::dot::{Dot, Config};
+/// use vetgraph::Graph;
+/// use vetgraph::dot::{Dot, Config};
 ///
 /// let mut graph = Graph::<_, ()>::new();
 /// graph.add_node("A");

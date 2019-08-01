@@ -39,8 +39,8 @@ use algo::Measure;
 ///
 /// # Example
 /// ```
-/// use petgraph::Graph;
-/// use petgraph::algo::astar;
+/// use vetgraph::Graph;
+/// use vetgraph::algo::astar;
 ///
 /// let mut g = Graph::new();
 /// let a = g.add_node((0., 0.));

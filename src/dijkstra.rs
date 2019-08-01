@@ -33,9 +33,9 @@ use algo::Measure;
 /// Returns a `HashMap` that maps `NodeId` to path cost.
 /// # Example
 /// ```rust
-/// use petgraph::Graph;
-/// use petgraph::algo::dijkstra;
-/// use petgraph::prelude::*;
+/// use vetgraph::Graph;
+/// use vetgraph::algo::dijkstra;
+/// use vetgraph::prelude::*;
 /// use std::collections::HashMap;
 ///
 /// let mut graph : Graph<(),(),Directed>= Graph::new();

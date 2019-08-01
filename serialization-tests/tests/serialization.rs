@@ -1,5 +1,5 @@
 
-extern crate petgraph;
+extern crate vetgraph;
 #[macro_use] extern crate quickcheck;
 extern crate itertools;
 extern crate serde_json;
@@ -13,12 +13,12 @@ use std::iter::FromIterator;
 use itertools::{Itertools, repeat_n};
 use itertools::assert_equal;
 
-use petgraph::prelude::*;
-use petgraph::EdgeType;
-use petgraph::graph::{node_index, edge_index, IndexType};
-use petgraph::visit::EdgeRef;
-use petgraph::visit::NodeIndexable;
-use petgraph::visit::IntoEdgeReferences;
+use vetgraph::prelude::*;
+use vetgraph::EdgeType;
+use vetgraph::graph::{node_index, edge_index, IndexType};
+use vetgraph::visit::EdgeRef;
+use vetgraph::visit::NodeIndexable;
+use vetgraph::visit::IntoEdgeReferences;
 
 // graphs are the equal, down to graph indices
 // this is a strict notion of graph equivalence:

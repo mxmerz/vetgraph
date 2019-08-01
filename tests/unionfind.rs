@@ -1,9 +1,9 @@
 extern crate rand;
-extern crate petgraph;
+extern crate vetgraph;
 
 use rand::{Rng, thread_rng, ChaChaRng, SeedableRng};
 use std::collections::HashSet;
-use petgraph::unionfind::UnionFind;
+use vetgraph::unionfind::UnionFind;
 
 #[test]
 fn uf_test() {

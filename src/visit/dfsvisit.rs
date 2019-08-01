@@ -134,10 +134,10 @@ impl<B> Default for Control<B> {
 /// the goal vertex.
 ///
 /// ```
-/// use petgraph::prelude::*;
-/// use petgraph::graph::node_index as n;
-/// use petgraph::visit::depth_first_search;
-/// use petgraph::visit::{DfsEvent, Control};
+/// use vetgraph::prelude::*;
+/// use vetgraph::graph::node_index as n;
+/// use vetgraph::visit::depth_first_search;
+/// use vetgraph::visit::{DfsEvent, Control};
 ///
 /// let gr: Graph<(), ()> = Graph::from_edges(&[
 ///     (0, 1), (0, 2), (0, 3),

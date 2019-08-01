@@ -1,15 +1,15 @@
 #![cfg(feature = "graphmap")]
-extern crate petgraph;
+extern crate vetgraph;
 
 use std::collections::HashSet;
 use std::fmt;
 
-use petgraph::prelude::*;
-use petgraph::visit::{ Walker, };
+use vetgraph::prelude::*;
+use vetgraph::visit::{ Walker, };
 
-use petgraph::algo::{ dijkstra, };
+use vetgraph::algo::{ dijkstra, };
 
-use petgraph::dot::{Dot, Config};
+use vetgraph::dot::{Dot, Config};
 
 #[test]
 fn simple() {
@@ -244,7 +244,7 @@ fn scc() {
         (7, 4, 9),
         (4, 1, 10)]);
 
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(&gr), vec![
         vec![0, 3, 6],
         vec![1, 4, 7],
         vec![2, 5, 8],

@@ -52,9 +52,9 @@ pub use super::astar::astar;
 /// For a directed graph, this is the *weakly* connected components.
 /// # Example
 /// ```rust
-/// use petgraph::Graph;
-/// use petgraph::algo::connected_components;
-/// use petgraph::prelude::*;
+/// use vetgraph::Graph;
+/// use vetgraph::algo::connected_components;
+/// use vetgraph::prelude::*;
 ///
 /// let mut graph : Graph<(),(),Directed>= Graph::new();
 /// let a = graph.add_node(()); // node with no weight
@@ -435,9 +435,9 @@ pub fn tarjan_scc<G>(g: G) -> Vec<Vec<G::NodeId>>
 /// the output is acyclic.
 /// # Example
 /// ```rust
-/// use petgraph::Graph;
-/// use petgraph::algo::condensation;
-/// use petgraph::prelude::*;
+/// use vetgraph::Graph;
+/// use vetgraph::algo::condensation;
+/// use vetgraph::prelude::*;
 ///
 /// let mut graph : Graph<(),(),Directed> = Graph::new();
 /// let a = graph.add_node(()); // node with no weight
@@ -477,9 +477,9 @@ pub fn tarjan_scc<G>(g: G) -> Vec<Vec<G::NodeId>>
 /// If `make_acyclic` is true, self-loops and multi edges are ignored:
 ///
 /// ```rust
-/// # use petgraph::Graph;
-/// # use petgraph::algo::condensation;
-/// # use petgraph::prelude::*;
+/// # use vetgraph::Graph;
+/// # use vetgraph::algo::condensation;
+/// # use vetgraph::prelude::*;
 /// #
 /// # let mut graph : Graph<(),(),Directed> = Graph::new();
 /// # let a = graph.add_node(()); // node with no weight
@@ -661,9 +661,9 @@ pub struct NegativeCycle(());
 ///
 /// # Example
 /// ```rust
-/// use petgraph::Graph;
-/// use petgraph::algo::bellman_ford;
-/// use petgraph::prelude::*;
+/// use vetgraph::Graph;
+/// use vetgraph::algo::bellman_ford;
+/// use vetgraph::prelude::*;
 ///
 /// let mut g = Graph::new();
 /// let a = g.add_node(()); // node with no weight

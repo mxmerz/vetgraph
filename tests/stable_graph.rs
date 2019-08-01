@@ -1,19 +1,19 @@
 #![cfg(feature = "stable_graph")]
 
-extern crate petgraph;
+extern crate vetgraph;
 extern crate itertools;
 #[macro_use] extern crate defmac;
 
-use petgraph::prelude::*;
-use petgraph::stable_graph::node_index as n;
-use petgraph::EdgeType;
-use petgraph::algo::{kosaraju_scc, tarjan_scc};
-use petgraph::visit::{
+use vetgraph::prelude::*;
+use vetgraph::stable_graph::node_index as n;
+use vetgraph::EdgeType;
+use vetgraph::algo::{kosaraju_scc, tarjan_scc};
+use vetgraph::visit::{
     NodeIndexable,
     IntoNodeReferences,
     IntoEdgeReferences,
 };
-use petgraph::dot::Dot;
+use vetgraph::dot::Dot;
 
 use itertools::assert_equal;
 

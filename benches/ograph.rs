@@ -1,9 +1,9 @@
 #![feature(test)]
 
-extern crate petgraph;
+extern crate vetgraph;
 extern crate test;
 
-use petgraph::graph::Graph;
+use vetgraph::graph::Graph;
 
 #[bench]
 fn bench_inser(b: &mut test::Bencher) {

@@ -103,8 +103,8 @@ impl<N, E, Ty, Ix> Csr<N, E, Ty, Ix>
     ///
     /// # Example
     /// ```rust
-    /// use petgraph::csr::Csr;
-    /// use petgraph::prelude::*;
+    /// use vetgraph::csr::Csr;
+    /// use vetgraph::prelude::*;
     ///
     /// # fn main() {
     ///
@@ -148,8 +148,8 @@ impl<N, E, Ix> Csr<N, E, Directed, Ix>
     /// Computes in **O(|E| + |V|)** time.
     /// # Example
     /// ```rust
-    /// use petgraph::csr::Csr;
-    /// use petgraph::prelude::*;
+    /// use vetgraph::csr::Csr;
+    /// use vetgraph::prelude::*;
     ///
     /// # fn main() {
     ///

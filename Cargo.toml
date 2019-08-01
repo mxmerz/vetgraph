@@ -1,6 +1,6 @@
 [package]
 
-name = "petgraph"
+name = "vetgraph"
 version = "0.4.13"
 license = "MIT/Apache-2.0"
 authors = [
@@ -10,14 +10,14 @@ authors = [
 
 description = "Graph data structure library. Provides graph types and graph algorithms."
 documentation = "https://docs.rs/petgraph/"
-repository = "https://github.com/bluss/petgraph"
+repository = "https://github.com/mxmerz/vetgraph"
 
 keywords = ["data-structure", "graph", "unionfind", "graph-algorithms"]
 categories = ["data-structures"]
 
 [lib]
 
-name = "petgraph"
+name = "vetgraph"
 bench = false
 
 [profile.release]

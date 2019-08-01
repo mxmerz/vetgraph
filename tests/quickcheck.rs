@@ -1,7 +1,7 @@
 #![cfg(feature="quickcheck")]
 #[macro_use] extern crate quickcheck;
 extern crate rand;
-extern crate petgraph;
+extern crate vetgraph;
 #[macro_use] extern crate defmac;
 
 extern crate odds;
@@ -19,12 +19,12 @@ use rand::Rng;
 use itertools::assert_equal;
 use itertools::cloned;
 
-use petgraph::prelude::*;
-use petgraph::{
+use vetgraph::prelude::*;
+use vetgraph::{
     EdgeType, 
 };
-use petgraph::dot::{Dot, Config};
-use petgraph::algo::{
+use vetgraph::dot::{Dot, Config};
+use vetgraph::algo::{
     condensation,
     min_spanning_tree,
     is_cyclic_undirected,
@@ -37,16 +37,16 @@ use petgraph::algo::{
     dijkstra,
     bellman_ford,
 };
-use petgraph::visit::{Topo, Reversed};
-use petgraph::visit::{
+use vetgraph::visit::{Topo, Reversed};
+use vetgraph::visit::{
     IntoNodeReferences,
     IntoEdgeReferences,
     NodeIndexable,
     EdgeRef,
 };
-use petgraph::data::FromElements;
-use petgraph::graph::{IndexType, node_index, edge_index};
-use petgraph::graphmap::{
+use vetgraph::data::FromElements;
+use vetgraph::graph::{IndexType, node_index, edge_index};
+use vetgraph::graphmap::{
     NodeTrait,
 };
 
@@ -720,9 +720,9 @@ fn set<I>(iter: I) -> HashSet<I::Item>
 
 quickcheck! {
     fn dfs_visit(gr: Graph<(), ()>, node: usize) -> bool {
-        use petgraph::visit::{Visitable, VisitMap};
-        use petgraph::visit::DfsEvent::*;
-        use petgraph::visit::{Time, depth_first_search};
+        use vetgraph::visit::{Visitable, VisitMap};
+        use vetgraph::visit::DfsEvent::*;
+        use vetgraph::visit::{Time, depth_first_search};
         if gr.node_count() == 0 {
             return true;
         }

@@ -1,18 +1,18 @@
-extern crate petgraph;
+extern crate vetgraph;
 
 use std::fs::File;
 use std::io::prelude::*;
 
-use petgraph::prelude::*;
-use petgraph::{
+use vetgraph::prelude::*;
+use vetgraph::{
     EdgeType,
 };
-use petgraph::graph::{
+use vetgraph::graph::{
     node_index,
     edge_index,
 };
 
-use petgraph::algo::{
+use vetgraph::algo::{
     is_isomorphic,
     is_isomorphic_matching,
 };
@@ -282,7 +282,7 @@ fn petersen_iso()
     graph_to_ad_matrix(&petb);
     */
 
-    assert!(petgraph::algo::is_isomorphic(&peta, &petb));
+    assert!(vetgraph::algo::is_isomorphic(&peta, &petb));
 }
 
 #[test]
@@ -293,7 +293,7 @@ fn petersen_undir_iso()
     let peta = str_to_digraph(PETERSEN_A);
     let petb = str_to_digraph(PETERSEN_B);
 
-    assert!(petgraph::algo::is_isomorphic(&peta, &petb));
+    assert!(vetgraph::algo::is_isomorphic(&peta, &petb));
 }
 
 #[test]
@@ -302,7 +302,7 @@ fn full_iso()
     let a = str_to_graph(FULL_A);
     let b = str_to_graph(FULL_B);
 
-    assert!(petgraph::algo::is_isomorphic(&a, &b));
+    assert!(vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -311,7 +311,7 @@ fn praust_dir_no_iso()
     let a = str_to_digraph(PRAUST_A);
     let b = str_to_digraph(PRAUST_B);
 
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -320,7 +320,7 @@ fn praust_undir_no_iso()
     let a = str_to_graph(PRAUST_A);
     let b = str_to_graph(PRAUST_B);
 
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -329,7 +329,7 @@ fn coxeter_di_iso()
     // The correct isomorphism is
     let a = str_to_digraph(COXETER_A);
     let b = str_to_digraph(COXETER_B);
-    assert!(petgraph::algo::is_isomorphic(&a, &b));
+    assert!(vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -338,7 +338,7 @@ fn coxeter_undi_iso()
     // The correct isomorphism is
     let a = str_to_graph(COXETER_A);
     let b = str_to_graph(COXETER_B);
-    assert!(petgraph::algo::is_isomorphic(&a, &b));
+    assert!(vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -346,7 +346,7 @@ fn g14_dir_not_iso()
 {
     let a = str_to_digraph(G1D);
     let b = str_to_digraph(G4D);
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -354,7 +354,7 @@ fn g14_undir_not_iso()
 {
     let a = str_to_digraph(G1U);
     let b = str_to_digraph(G4U);
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -362,7 +362,7 @@ fn g12_undir_iso()
 {
     let a = str_to_digraph(G1U);
     let b = str_to_digraph(G2U);
-    assert!(petgraph::algo::is_isomorphic(&a, &b));
+    assert!(vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -370,7 +370,7 @@ fn g3_not_iso()
 {
     let a = str_to_digraph(G3_1);
     let b = str_to_digraph(G3_2);
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -380,7 +380,7 @@ fn g8_not_iso()
     let b = str_to_digraph(G8_2);
     assert_eq!(a.edge_count(), b.edge_count());
     assert_eq!(a.node_count(), b.node_count());
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -390,7 +390,7 @@ fn s12_not_iso()
     let b = str_to_digraph(S2);
     assert_eq!(a.edge_count(), b.edge_count());
     assert_eq!(a.node_count(), b.node_count());
-    assert!(!petgraph::algo::is_isomorphic(&a, &b));
+    assert!(!vetgraph::algo::is_isomorphic(&a, &b));
 }
 
 #[test]
@@ -398,23 +398,23 @@ fn iso1()
 {
     let mut g0 = Graph::<_, ()>::new();
     let mut g1 = Graph::<_, ()>::new();
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 
     // very simple cases
     let a0 = g0.add_node(0);
     let a1 = g1.add_node(0);
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     let b0 = g0.add_node(1);
     let b1 = g1.add_node(1);
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     let _ = g0.add_node(2);
-    assert!(!petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(!vetgraph::algo::is_isomorphic(&g0, &g1));
     let _ = g1.add_node(2);
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     g0.add_edge(a0, b0, ());
-    assert!(!petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(!vetgraph::algo::is_isomorphic(&g0, &g1));
     g1.add_edge(a1, b1, ());
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 }
 
 #[test]
@@ -431,7 +431,7 @@ fn iso2()
     let c1 = g1.add_node(2);
     g0.add_edge(a0, b0, ());
     g1.add_edge(c1, b1, ());
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     // a -> b
     // a -> c
     // vs.
@@ -439,7 +439,7 @@ fn iso2()
     // c -> a
     g0.add_edge(a0, c0, ());
     g1.add_edge(c1, a1, ());
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 
     // add
     // b -> c
@@ -448,12 +448,12 @@ fn iso2()
 
     let _ = g0.add_edge(b0, c0, ());
     let _ = g1.add_edge(b1, a1, ());
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     let d0 = g0.add_node(3);
     let d1 = g1.add_node(3);
     let e0 = g0.add_node(4);
     let e1 = g1.add_node(4);
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
     // add
     // b -> e -> d
     // vs
@@ -462,7 +462,7 @@ fn iso2()
     g0.add_edge(e0, d0, ());
     g1.add_edge(b1, d1, ());
     g1.add_edge(d1, e1, ());
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 }
 
 #[test]
@@ -486,14 +486,14 @@ fn iso_matching() {
 fn iso_100n_100e() {
     let g0 = graph_from_file("tests/res/graph_100n_100e.txt");
     let g1 = graph_from_file("tests/res/graph_100n_100e_iso.txt");
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 }
 
 #[test]
 fn iso_large() {
     let g0 = graph_from_file("tests/res/graph_1000n_1000e.txt");
     let g1 = graph_from_file("tests/res/graph_1000n_1000e_iso.txt");
-    assert!(petgraph::algo::is_isomorphic(&g0, &g1));
+    assert!(vetgraph::algo::is_isomorphic(&g0, &g1));
 }
 
 // isomorphism isn't correct for multigraphs.

@@ -1,16 +1,16 @@
-extern crate petgraph;
+extern crate vetgraph;
 
 use std::collections::HashSet;
 use std::hash::Hash;
 
-use petgraph::prelude::*;
-use petgraph::{
+use vetgraph::prelude::*;
+use vetgraph::{
     EdgeType,
 };
 
-use petgraph as pg;
+use vetgraph as pg;
 
-use petgraph::algo::{
+use vetgraph::algo::{
     dominators,
     has_path_connecting,
     is_cyclic_undirected,
@@ -18,12 +18,12 @@ use petgraph::algo::{
     is_isomorphic_matching,
 };
 
-use petgraph::graph::node_index as n;
-use petgraph::graph::{
+use vetgraph::graph::node_index as n;
+use vetgraph::graph::{
     IndexType,
 };
 
-use petgraph::visit::{
+use vetgraph::visit::{
     IntoNodeIdentifiers,
     NodeFiltered,
     Reversed,
@@ -32,13 +32,13 @@ use petgraph::visit::{
     VisitMap,
     Walker,
 };
-use petgraph::algo::{
+use vetgraph::algo::{
     DfsSpace,
     dijkstra,
     astar,
 };
 
-use petgraph::dot::{
+use vetgraph::dot::{
     Dot,
 };
 
@@ -160,7 +160,7 @@ fn bfs() {
 
 #[test]
 fn mst() {
-    use petgraph::data::FromElements;
+    use vetgraph::data::FromElements;
 
     let mut gr = Graph::<_,_>::new();
     let a = gr.add_node("A");
@@ -463,7 +463,7 @@ fn test_generate_directed() {
 #[cfg(feature = "generate")]
 #[test]
 fn test_generate_dag() {
-    use petgraph::visit::GetAdjacencyMatrix;
+    use vetgraph::visit::GetAdjacencyMatrix;
     for size in 1..5 {
         let gen = pg::generate::Generator::directed_acyclic(size);
         let nedges = (size - 1) * size / 2;
@@ -477,7 +477,7 @@ fn test_generate_dag() {
         adjmats.dedup();
         assert_eq!(adjmats.len(), graphs.len());
         for gr in &graphs {
-            assert!(!petgraph::algo::is_cyclic_directed(gr),
+            assert!(!vetgraph::algo::is_cyclic_directed(gr),
                     "Assertion failed: {:?} acyclic", gr);
         }
     }
@@ -556,7 +556,7 @@ fn test_toposort() {
     gr.add_edge(h, j, 3.);
     gr.add_edge(i, j, 1.);
 
-    let order = petgraph::algo::toposort(&gr, None).unwrap();
+    let order = vetgraph::algo::toposort(&gr, None).unwrap();
     println!("{:?}", order);
     assert_eq!(order.len(), gr.node_count());
 
@@ -570,7 +570,7 @@ fn test_toposort_eq() {
     let b = g.add_node("B");
     g.add_edge(a, b, ());
 
-    assert_eq!(petgraph::algo::toposort(&g, None), Ok(vec![a, b]));
+    assert_eq!(vetgraph::algo::toposort(&g, None), Ok(vec![a, b]));
 }
 
 #[test]
@@ -595,7 +595,7 @@ fn is_cyclic_directed() {
     gr.add_edge(f, g, 11.);
     gr.add_edge(e, g, 9.);
 
-    assert!(!petgraph::algo::is_cyclic_directed(&gr));
+    assert!(!vetgraph::algo::is_cyclic_directed(&gr));
 
     // add a disjoint part
     let h = gr.add_node("H");
@@ -604,10 +604,10 @@ fn is_cyclic_directed() {
     gr.add_edge(h, i, 1.);
     gr.add_edge(h, j, 3.);
     gr.add_edge(i, j, 1.);
-    assert!(!petgraph::algo::is_cyclic_directed(&gr));
+    assert!(!vetgraph::algo::is_cyclic_directed(&gr));
 
     gr.add_edge(g, e, 0.);
-    assert!(petgraph::algo::is_cyclic_directed(&gr));
+    assert!(vetgraph::algo::is_cyclic_directed(&gr));
 }
 
 /// Compare two scc sets. Inside each scc, the order does not matter,
@@ -643,13 +643,13 @@ fn scc() {
         (7, 4),
         (4, 1)]);
 
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(&gr), vec![
         vec![n(0), n(3), n(6)],
         vec![n(2), n(5), n(8)],
         vec![n(1), n(4), n(7)],
     ], true);
     // Reversed edges gives the same sccs (when sorted)
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(Reversed(&gr)), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(Reversed(&gr)), vec![
         vec![n(1), n(4), n(7)],
         vec![n(2), n(5), n(8)],
         vec![n(0), n(3), n(6)],
@@ -663,7 +663,7 @@ fn scc() {
     let ed = hr.find_edge(n(6), n(8)).unwrap();
     assert!(hr.remove_edge(ed).is_some());
 
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(&hr), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(&hr), vec![
         vec![n(0), n(3), n(6)],
         vec![n(1), n(2), n(4), n(5), n(7), n(8)],
     ], false);
@@ -681,7 +681,7 @@ fn scc() {
     gr.add_edge(n(2), n(0), ());
     gr.add_edge(n(1), n(0), ());
 
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(&gr), vec![
         vec![n(0)], vec![n(1)], vec![n(2)], vec![n(3)],
     ], true);
 
@@ -696,7 +696,7 @@ fn scc() {
     ]);
     gr.add_node(());
     // no order for the disconnected one
-    assert_sccs_eq(petgraph::algo::kosaraju_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::kosaraju_scc(&gr), vec![
         vec![n(0)], vec![n(1)], vec![n(2)], vec![n(3)],
     ], false);
 }
@@ -717,7 +717,7 @@ fn tarjan_scc() {
         (7, 4),
         (4, 1)]);
 
-    assert_sccs_eq(petgraph::algo::tarjan_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::tarjan_scc(&gr), vec![
         vec![n(0), n(3), n(6)],
         vec![n(2), n(5), n(8)],
         vec![n(1), n(4), n(7)],
@@ -731,7 +731,7 @@ fn tarjan_scc() {
     let ed = hr.find_edge(n(6), n(8)).unwrap();
     assert!(hr.remove_edge(ed).is_some());
 
-    assert_sccs_eq(petgraph::algo::tarjan_scc(&hr), vec![
+    assert_sccs_eq(vetgraph::algo::tarjan_scc(&hr), vec![
         vec![n(1), n(2), n(4), n(5), n(7), n(8)],
         vec![n(0), n(3), n(6)],
     ], false);
@@ -749,7 +749,7 @@ fn tarjan_scc() {
     gr.add_edge(n(2), n(0), ());
     gr.add_edge(n(1), n(0), ());
 
-    assert_sccs_eq(petgraph::algo::tarjan_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::tarjan_scc(&gr), vec![
         vec![n(0)], vec![n(1)], vec![n(2)], vec![n(3)],
     ], true);
 
@@ -764,7 +764,7 @@ fn tarjan_scc() {
     ]);
     gr.add_node(());
     // no order for the disconnected one
-    assert_sccs_eq(petgraph::algo::tarjan_scc(&gr), vec![
+    assert_sccs_eq(vetgraph::algo::tarjan_scc(&gr), vec![
         vec![n(0)], vec![n(1)], vec![n(2)], vec![n(3)],
     ], false);
 }
@@ -790,17 +790,17 @@ fn condensation()
 
     // make_acyclic = true
 
-    let cond = petgraph::algo::condensation(gr.clone(), true);
+    let cond = vetgraph::algo::condensation(gr.clone(), true);
 
     assert!(cond.node_count() == 3);
     assert!(cond.edge_count() == 2);
-    assert!(!petgraph::algo::is_cyclic_directed(&cond),
+    assert!(!vetgraph::algo::is_cyclic_directed(&cond),
             "Assertion failed: {:?} acyclic", cond);
 
 
     // make_acyclic = false
 
-    let cond = petgraph::algo::condensation(gr.clone(), false);
+    let cond = vetgraph::algo::condensation(gr.clone(), false);
 
     assert!(cond.node_count() == 3);
     assert!(cond.edge_count() == gr.edge_count());
@@ -831,17 +831,17 @@ fn connected_comp()
     gr.add_edge(n(1), n(7), ());
     gr.add_edge(n(7), n(4), ());
     gr.add_edge(n(4), n(1), ());
-    assert_eq!(petgraph::algo::connected_components(&gr), 1);
+    assert_eq!(vetgraph::algo::connected_components(&gr), 1);
 
     gr.add_node(9);
     gr.add_node(10);
-    assert_eq!(petgraph::algo::connected_components(&gr), 3);
+    assert_eq!(vetgraph::algo::connected_components(&gr), 3);
 
     gr.add_edge(n(9), n(10), ());
-    assert_eq!(petgraph::algo::connected_components(&gr), 2);
+    assert_eq!(vetgraph::algo::connected_components(&gr), 2);
 
     let gr = gr.into_edge_type::<Undirected>();
-    assert_eq!(petgraph::algo::connected_components(&gr), 2);
+    assert_eq!(vetgraph::algo::connected_components(&gr), 2);
 }
 
 #[should_panic]
@@ -1465,7 +1465,7 @@ fn filtered() {
 
 #[test]
 fn filtered_edge_reverse() {
-    use petgraph::visit::EdgeFiltered;
+    use vetgraph::visit::EdgeFiltered;
     #[derive(Eq, PartialEq)]
     enum E {
         A,
@@ -1605,10 +1605,10 @@ fn filtered_edge_reverse() {
 
 #[test]
 fn dfs_visit() {
-    use petgraph::visit::{Visitable, VisitMap};
-    use petgraph::visit::DfsEvent::*;
-    use petgraph::visit::{Time, depth_first_search};
-    use petgraph::visit::Control;
+    use vetgraph::visit::{Visitable, VisitMap};
+    use vetgraph::visit::DfsEvent::*;
+    use vetgraph::visit::{Time, depth_first_search};
+    use vetgraph::visit::Control;
     let gr: Graph<(), ()> = Graph::from_edges(&[
         (0, 5), (0, 2), (0, 3), (0, 1),
         (1, 3),
@@ -1701,7 +1701,7 @@ fn dfs_visit() {
 
 #[test]
 fn filtered_post_order() {
-    use petgraph::visit::NodeFiltered;
+    use vetgraph::visit::NodeFiltered;
 
     let mut gr: Graph<(), ()> = Graph::from_edges(&[
         (0, 2),
@@ -1729,9 +1729,9 @@ fn filtered_post_order() {
 
 #[test]
 fn filter_elements() {
-    use petgraph::data::Element::{Node, Edge};
-    use petgraph::data::FromElements;
-    use petgraph::data::ElementIterator;
+    use vetgraph::data::Element::{Node, Edge};
+    use vetgraph::data::FromElements;
+    use vetgraph::data::ElementIterator;
     let elements = vec![
         Node { weight: "A"},
         Node { weight: "B"},
@@ -1766,9 +1766,9 @@ fn filter_elements() {
 
 #[test]
 fn test_edge_filtered() {
-    use petgraph::algo::connected_components;
-    use petgraph::visit::EdgeFiltered;
-    use petgraph::visit::IntoEdgeReferences;
+    use vetgraph::algo::connected_components;
+    use vetgraph::visit::EdgeFiltered;
+    use vetgraph::visit::IntoEdgeReferences;
 
     let gr = UnGraph::<(), _>::from_edges(&[
             // cycle
